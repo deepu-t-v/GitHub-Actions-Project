@@ -77,21 +77,21 @@ jobs:
       run: mvn package
 
     - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0  
-      - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@v5.0.0
-        env: 
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ vars.SONAR>HOST>URL }}
+       with:
+        fetch-depth: 0  
+    - name: SonarQube Scan
+      uses: SonarSource/sonarqube-scan-action@v5.0.0
+      env: 
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: ${{ vars.SONAR>HOST>URL }}
           
        # Check the Quality Gate status.
-      - name: SonarQube Quality Gate check
-        id: sonarqube-quality-gate-check
-        uses: sonarsource/sonarqube-quality-gate-action@master
-        with:
-          pollingTimeoutSec: 600
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} #OPTIONAL
+    - name: SonarQube Quality Gate check
+      id: sonarqube-quality-gate-check
+      uses: sonarsource/sonarqube-quality-gate-action@master
+       with:
+        pollingTimeoutSec: 600
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} #OPTIONAL
  
