@@ -106,8 +106,6 @@ jobs:
     needs: build_project_sonar_scan
     steps:
     - uses: actions/checkout@v4
-    - name: Build Project
-      run: mvn package
     - name: Download JAR artifact
       uses: actions/download-artifact@v4
       with:
