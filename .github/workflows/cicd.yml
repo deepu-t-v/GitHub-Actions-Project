@@ -83,8 +83,7 @@ jobs:
       uses: SonarSource/sonarqube-scan-action@v6
       env: 
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      with:
-          projectBaseDir: Github-Actions-Project/
+      
           
        # Check the Quality Gate status.
     - name: SonarQube Quality Gate check
